@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.myproject.mapper.AccountMapper">
+
+	<insert id="aInsert">
+		insert into wordmember(id, pass, name, email,
+		regdate)
+		values(#{id}, #{pass},#{name},#{email},now())
+	</insert>
+	<!-- id 체크하기 -->
+	<select id="afindById" resultType="com.myproject.dto.AccountDTO">
+		select * from wordmember where
+		id=#{id}
+	</select>
+	
+	<!-- 수정 -->
+	<update id="aUpdate">
+		update wordmember
+		set email=#{email}, name=#{name},
+		pass=#{pass}
+		where id=#{id}
+	</update>
+	<!--회원탈퇴 -->
+	<delete id="aDelete">
+		delete from wordmember where id=#{id}
+	</delete>
+	
+</mapper>
